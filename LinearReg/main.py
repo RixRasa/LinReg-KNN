@@ -51,7 +51,7 @@ plt.scatter(dataF.TRANSMISSION, dataF.CO2EMISSIONS,color = 'red',marker='o' ,edg
 plt.scatter(dataF.FUELTYPE, dataF.CO2EMISSIONS,color = 'red',marker='o' ,edgecolors='black');  plt.title('FUELTYPE');plt.show()
 sb.heatmap(dataF.corr(), annot = True,square=True, fmt='.2f')
 plt.show()'''
-
+"""aaaa"""
 
 #4. FEATURE ENGINEERING
 """NORMALIZATION"""
