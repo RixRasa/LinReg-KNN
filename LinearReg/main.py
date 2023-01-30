@@ -1,4 +1,3 @@
-import np as np
 import pandas as pd
 import numpy as np
 import seaborn as sb
@@ -87,9 +86,16 @@ ser_predicted = pd.Series(data = labels_predicted, name = 'Predicted', index = X
 res_df = pd.concat([X_test,y_test,ser_predicted], axis = 1)
 print(res_df.head())
 
-'''Mse error'''
+'''Mse error & r2 error'''
+def r2score(y_pred, y):
+    rss = np.sum((y_pred - y) ** 2)
+    tss = np.sum((y - y.mean()) ** 2)
+    r2 = 1 - (rss / tss)
+    return r2
 mse = mean_squared_error(res_df['CO2EMISSIONS'], res_df['Predicted'])
-print(mse)
+print("Mean square error: ", mse)
+r2 = r2score(labels_predicted, y_test)
+print("R2 error: ", r2)
 
 
 #6. MAKING LINEARREGRESSION MODEL FROM SCRATCH
@@ -155,11 +161,6 @@ print(res_dfF.head())
 '''MSE ERROR, R2-ERROR and Coefficients'''
 mse = mean_squared_error(res_dfF['CO2EMISSIONS'], res_dfF['Predicted'])
 print("Mean square error: " , mse)
-def r2score(y_pred, y):
-    rss = np.sum((y_pred - y) ** 2)
-    tss = np.sum((y - y.mean()) ** 2)
-    r2 = 1 - (rss / tss)
-    return r2
 r2 = r2score(y_predicted, y_test)
 print("R2 error: ", r2)
 print("Coefs:" , coefs)
